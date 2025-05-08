@@ -1,4 +1,4 @@
-﻿import dash
+import dash
 from dash import dcc, html, Input, Output, State, dash_table
 import plotly.graph_objs as go
 import plotly.express as px
@@ -33,7 +33,6 @@ CONTRACT_NAME_FILTERS = {
         'UST 10Y NOTE - CHICAGO BOARD OF TRADE'
     ],
     '10Y': [
-        
         'ULTRA 10-YEAR U.S. T-NOTES - CHICAGO BOARD OF TRADE',
         'ULTRA UST 10Y - CHICAGO BOARD OF TRADE'
     ],
@@ -209,6 +208,7 @@ def fair_value_roll(front_price, back_price, spot, repo, days, cf_front, cf_back
     }
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
+server = app.server  # Define server here for Render
 app.title = "US Treasury Futures Positioning Dashboard"
 
 try:
@@ -484,10 +484,6 @@ def roll_analysis(n_clicks, front, back, spot, repo, days, cf_front, cf_back):
     data = [{k: f"{v:.4f}" if isinstance(v, float) else v for k, v in result.items()}]
     columns = [{"name": k, "id": k} for k in result.keys()]
     return data, columns
-    
-app = dash.Dash(__name__)
-server = app.server 
 
 if __name__ == '__main__':
     app.run(debug=True)
-    server = app.server
