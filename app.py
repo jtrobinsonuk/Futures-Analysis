@@ -30,10 +30,11 @@ CONTRACT_NAME_FILTERS = {
     ],
     '7Y': [
         '10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE',
-        'ULTRA 10-YEAR U.S. T-NOTES - CHICAGO BOARD OF TRADE'
+        'UST 10Y NOTE - CHICAGO BOARD OF TRADE'
     ],
     '10Y': [
-        'UST 10Y NOTE - CHICAGO BOARD OF TRADE',
+        
+        'ULTRA 10-YEAR U.S. T-NOTES - CHICAGO BOARD OF TRADE',
         'ULTRA UST 10Y - CHICAGO BOARD OF TRADE'
     ],
     '30Y': [
@@ -483,6 +484,9 @@ def roll_analysis(n_clicks, front, back, spot, repo, days, cf_front, cf_back):
     data = [{k: f"{v:.4f}" if isinstance(v, float) else v for k, v in result.items()}]
     columns = [{"name": k, "id": k} for k in result.keys()]
     return data, columns
+    
+app = dash.Dash(__name__)
+server = app.server 
 
 if __name__ == '__main__':
     app.run(debug=True)
