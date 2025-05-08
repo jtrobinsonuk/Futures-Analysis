@@ -302,11 +302,12 @@ app.layout = html.Div([
                         title="Correlation Matrix of Net Positions"
                     ).update_layout(height=500)
                 ),
+                html.Div([
+                    html.Hr(),
+                    html.P("© Jacob Robinson 2025. All rights reserved.", 
+                    style={'textAlign': 'center', 'color': '#7f7f7f', 'fontSize': '12px', 'marginTop': '20px'})
+                ])
             ], style={'width': '95%', 'margin': 'auto', 'padding': '20px'})
-            html.Div([
-            html.Hr(),
-            html.P("© Jacob Robinson 2025. All rights reserved.", 
-            style={'textAlign': 'center', 'color': '#7f7f7f', 'fontSize': '12px', 'marginTop': '20px'})
         ]),
         dcc.Tab(label='Futures Roll Analysis', children=[
             html.Div([
