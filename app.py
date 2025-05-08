@@ -14,7 +14,7 @@ FUTURES_SYMBOLS = {
     '2Y': 'ZT=F',
     '5Y': 'ZF=F',
     '7Y': 'ZN=F',  # You may want to update this symbol if CME changes it for 7Y
-    '10Y': 'ZN=F',
+    '10Y': 'TN=F',
     '30Y': 'ZB=F'
 }
 
@@ -303,6 +303,10 @@ app.layout = html.Div([
                     ).update_layout(height=500)
                 ),
             ], style={'width': '95%', 'margin': 'auto', 'padding': '20px'})
+            html.Div([
+            html.Hr(),
+            html.P("© Jacob Robinson 2025. All rights reserved.", 
+            style={'textAlign': 'center', 'color': '#7f7f7f', 'fontSize': '12px', 'marginTop': '20px'})
         ]),
         dcc.Tab(label='Futures Roll Analysis', children=[
             html.Div([
@@ -388,7 +392,7 @@ for contract in CONTRACT_NAME_FILTERS.keys():
         fig = go.Figure()
         color_map = {
             'net_lev': 'blue', 'zscore': 'orange', 'adaptive_z': 'green',
-            'cs_zscore': 'purple', 'momentum': 'brown', 'price': 'black'
+            'cs_zscore': 'purple', 'momentum': 'brown', 'price': 'crimson'
         }
         yaxis2_metrics = {'zscore', 'adaptive_z', 'cs_zscore'}
         has_data = False
@@ -402,7 +406,7 @@ for contract in CONTRACT_NAME_FILTERS.keys():
                         name='Price',
                         yaxis='y3', 
                         mode='lines',
-                        line=dict(color='black', width=2, dash='dot')
+                        line=dict(color='crimson', width=3, dash='dash')
                     ))
                     has_data = True
             elif not sig.empty and metric in sig.columns:
